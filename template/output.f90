@@ -144,6 +144,8 @@ SUBROUTINE output_annual (Fn)
    integer ald_doy        !Day of Year when Active-layer-Depth reaches max
    integer tree_counter   !tree counter
    integer no,i,j,p       !loop counters
+   real snowdepth_20yr_min
+   real, dimension(1) :: max_snowdepth_RunningRecord
    
    real x, y              !For general usage
    
