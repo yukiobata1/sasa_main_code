@@ -181,9 +181,9 @@ SUBROUTINE output_annual (Fn)
 !mass_grass: Grass biomass (gDM/stand)
    mass_grass = sum(gmass_leaf(:,:)) + sum(gmass_rod  (:,:)) + sum(gmass_croot    (:,:)) &
               + sum(gmass_root(:,:)) + sum(gmass_stock(:,:)) + sum(gmass_available(:,:))
-write(*,*) "Mass grass (Total grass biomass, MgC ha-1):", mass_grass/900 !�ǋL
-write(*,*) "Mass grass (Total grass biomass, MgC ha-1):", mass_grass
-write(*,*) "UnitConv:", unit_conv !�ǋL
+! write(*,*) "Mass grass (Total grass biomass, MgC ha-1):", mass_grass/900 !�ǋL
+! write(*,*) "Mass grass (Total grass biomass, MgC ha-1):", mass_grass
+! write(*,*) "UnitConv:", unit_conv !�ǋL
 
 !�ǋL�@gmass_AGB: Grass AGB(gDM/stand)
    gmass_AGB = sum(gmass_leaf(:,:)) + sum(gmass_rod  (:,:)) + sum(gmass_croot    (:,:))
