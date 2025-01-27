@@ -11,7 +11,7 @@ def run_a_exe(instance, folder, queue, output_file_path):
 
     print(f"Instance {instance} completed.")
     print("Current working directory:", os.getcwd())
-    fn_biomass_file = os.path.join(folder, "output_grass.txt")
+    fn_biomass_file = os.path.join(folder, "output_annual.txt")
     print("fn_biomass_file:", fn_biomass_file)
 
     # The folder path for the final output file
