@@ -73,7 +73,7 @@ if __name__ == "__main__":
         parent_path = f"./{parent}"
 
         # Change to desired output location
-        output_parent_folder = os.path.join("/mnt/newvolume", parent)
+        output_parent_folder = os.path.join("./output", parent)
         if not os.path.exists(output_parent_folder):
             os.makedirs(output_parent_folder)
 
@@ -97,7 +97,7 @@ if __name__ == "__main__":
 
             # Build the path in the new output folder (/mnt/newvolume)
             # Note: file[2:] removes the leading "./" from the input file path
-            output_file_path = os.path.join("/mnt/newvolume", file[2:])
+            output_file_path = os.path.join("/", file[2:])
             print("output_file_path:", output_file_path)
 
             output_folder = os.path.dirname(output_file_path)
