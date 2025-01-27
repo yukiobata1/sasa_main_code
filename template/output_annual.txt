@@ -1,0 +1,2 @@
+Year, TreeDensity, Heigh, DBH, BA, MassW, MassW_ag, MassG, Litter, SOM, GPP, NPP , NEE, LAImax_W, LAImax_G, LAImean_W, LAImean_G, ccon, RO, Biome, ALD, ALD_DOY
+   1,    0.0,    0.0,    0.000,    0.000,   0.0,   0.0,   0.2,   0.0,   0.0,  0.0,  0.0,   0.0, -0.0,  0.0,  0.0,  0.0,  0.0,  0.000,   0.0, 12, 20, 81
