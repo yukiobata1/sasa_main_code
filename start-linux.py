@@ -73,7 +73,7 @@ if __name__ == "__main__":
         parent_path = f"./{parent}"
 
         # Change to desired output location
-        output_parent_folder = os.path.join("./output", parent)
+        output_parent_folder = os.path.join("/home/ec2-user/sasa_main_code/output", parent)
         if not os.path.exists(output_parent_folder):
             os.makedirs(output_parent_folder)
 
