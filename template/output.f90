@@ -237,7 +237,7 @@ SUBROUTINE output_annual (Fn)
 !   write (Fn,'( i4,a, 2(f7.1,a), 2(f9.3,a), 5(f6.1,a), 2(f5.1,a), f6.1,a, 4(f5.1,a), (f5.1,a), f7.3,a, f6.1,a, 2(i3,a), i3)') &
 
 	write (Fn,'( i4,a, 2(f7.1,a), 2(f9.3,a), 5(f6.1,a), 2(f5.1,a), &
-					f6.1,a, 4(f5.1,a), (f5.1,a), f7.3,a, f6.1,a, 2(i3,a), i3, a, f6.2, a, f6.2)') & !�ǋL
+					f6.1,a, 4(f5.1,a), (f5.1,a), f7.3,a, f6.1,a, 2(i3,a), i3, a, f10.2, a, f10.2)') & !�ǋL
 
    year                                      , ',', & ! 1 Simulation year
    tree_counter * ( (100.0/Max_loc)**2 )     , ',', & ! 2 Tree density (ha-1)
