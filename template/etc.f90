@@ -126,7 +126,19 @@ SUBROUTINE stat_climate (prec, tmp_air, tmp_soil)
       end do
       stat_water_RunningRecord(1,p) = stat_water(p)
    end do
-   
+
+!snow_depth(Activate when adding dwarf bamboo,‚Â‚¢‚©)
+
+	if(doy == 1) then
+		max_snowdepth_RunningRecord(2:20) = max_snowdepth_RunningRecord(1:19)
+	end if
+
+	if(doy == Day_in_Year) then
+		max_snowdepth_RunningRecord(1) = MAXVAL(pool_snow_RunningRecord)
+		snowdepth_20yr_min = MINVAL(max_snowdepth_RunningRecord)
+	end if
+
+
 END SUBROUTINE stat_climate
 
 

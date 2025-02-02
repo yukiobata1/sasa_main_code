@@ -574,6 +574,7 @@ MODULE grid_status_current1
    real tmp_coldest_20yr_ave !20yr running average of tmp_coldest_month (Celcius)
    real tmp_hottest_20yr_ave !20yr running average of tmp_hottest_month (Celcius)
    real gdd_20yr_ave         !20yr running average of growing-degree-day-sum
+	real snowdepth_20yr_min	  !20yr minimum value of 20 yr maximum snowdepth (•ª•z‚Ì‚½‚ß‚É‚Â‚¢‚©250108)
    
    real pool_litter_trunk    !litter pool in a stand (trunk of woody PFTs)         (gDM / stand)
    real pool_litter_leaf     !litter pool in a stand (leaves of woody PFTs)        (gDM / stand)
@@ -591,10 +592,11 @@ MODULE grid_status_current1
    real                        pool_snow !water equivalent snow depth (mm)
    
    !Running Records for 20yrs
-   real,dimension(20):: gdd_20yr_RunningRecord     !Growth Degree day
-   real,dimension(20):: tmp_coldest_RunningRecord  !Coldest month temperature (Celcius)
-   real,dimension(20):: tmp_hottest_RunningRecord  !Hottest month temperature (Celcius)
-   real,dimension(20):: tmp_ave_GrassGrowth_RR     !average temperature of growth phase of grass (Celcius)
+   real,dimension(20):: gdd_20yr_RunningRecord   	  !Growth Degree day
+   real,dimension(20):: tmp_coldest_RunningRecord    !Coldest month temperature (Celcius)
+   real,dimension(20):: tmp_hottest_RunningRecord    !Hottest month temperature (Celcius)
+   real,dimension(20):: max_snowdepth_RunningRecord  !maximum snowdepth (mm)
+   real,dimension(20):: tmp_ave_GrassGrowth_RR       !average temperature of growth phase of grass (Celcius)
    
    !Running Records of Carbon Pool
    real,dimension(Day_in_Year):: pool_c_RR !1yr RR of total carbon pool in the virtual forest (Kg C / m2)
@@ -684,3 +686,6 @@ MODULE grid_status_current2
    real frac_crown_coverage
    
 END MODULE grid_status_current2
+
+
+

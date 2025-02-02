@@ -383,7 +383,7 @@ SUBROUTINE grass_priority ()
       pft_exist(C4g_no) = .false.
    endif
    
-!TMP, Sasa extension, C3ï¿½ï¿½ï¿½{ï¿½ÉŒÅ’ï¿½
+!TMP, Sasa extension, C3‘–{‚ÉŒÅ’è
 flag_swap=.false.
 
 !_____________ Swap dominant Grass PFT if necessary
@@ -393,32 +393,32 @@ flag_swap=.false.
       i=dfl_leaf_shed (C3g_no) ; dfl_leaf_shed (C3g_no)=dfl_leaf_shed (C4g_no) ; dfl_leaf_shed (C4g_no)=i
    end if
    
-!_____________ ï¿½Tï¿½Tï¿½Rï¿½ï¿½Ì’è’…ï¿½ï¿½ï¿½ï¿½
-Do p=1, PFT_No
-   IF (Life_type(p)==9) then
-      pft_exist(p) = .true.
-      if (tmp_coldest_20yr_ave >= TC_max  (p)) pft_exist(p) = .false.
-      if (gdd_20yr_ave         >= GDD_max (p)) pft_exist(p) = .false.
-      if (gdd_20yr_ave         <= GDD_min (p)) pft_exist(p) = .false.
-      if (tmp_coldest_20yr_ave < TC_min   (p)) pft_exist(p) = .false.
-   ENDIF
-Enddo
+!_____________ ƒTƒT‚Rí‚Ì’è’…ğŒ
+!Do p=1, PFT_No
+!   IF (Life_type(p)==9) then
+!      pft_exist(p) = .true.
+!      if (tmp_coldest_20yr_ave >= TC_max  (p)) pft_exist(p) = .false.
+!      if (gdd_20yr_ave         >= GDD_max (p)) pft_exist(p) = .false.
+!      if (gdd_20yr_ave         <= GDD_min (p)) pft_exist(p) = .false.
+!      if (tmp_coldest_20yr_ave < TC_min   (p)) pft_exist(p) = .false.
+!   ENDIF
+!Enddo
 
-   !a1: mean annual air-temperature
-   a1 = sum(tmp_air_RunningRecord(1:Day_in_year)) / Day_in_year
-   
-   !a2: maximum snow pack
-   a2 = 0.0
-   do i=1, Day_in_year; a2 = max(a2, pool_snow_RunningRecord(i)); enddo !water equivalent (mm)
-   a2 = (a2/0.146)**0.90744101633                                       !height (mm)
+!   !a1: mean annual air-temperature
+!   a1 = sum(tmp_air_RunningRecord(1:Day_in_year)) / Day_in_year
+!   
+!   !a2: maximum snow pack
+!   a2 = 0.0
+!   do i=1, Day_in_year; a2 = max(a2, pool_snow_RunningRecord(i)); enddo !water equivalent (mm)
+!   a2 = (a2/0.146)**0.90744101633                                       !height (mm)
   
-!ï¿½`ï¿½Vï¿½}ï¿½Uï¿½Tï¿½ÈŠOï¿½ÌƒTï¿½Tï¿½Íï¿½ï¿½OFF
+!ƒ`ƒVƒ}ƒUƒTˆÈŠO‚ÌƒTƒT‚Íí‚ÉOFF
 !      pft_exist(C3g_no) = .false.
 !      pft_exist(C4g_no) = .false.
 !      pft_exist(23)     = .true.
 !      pft_exist(24)     = .false. 
 !      pft_exist(25)     = .false.
-!ï¿½Nï¿½}ï¿½Cï¿½Uï¿½Tï¿½ÈŠOï¿½ÌƒTï¿½Tï¿½Íï¿½ï¿½OFF
+!ƒNƒ}ƒCƒUƒTˆÈŠO‚ÌƒTƒT‚Íí‚ÉOFF
 !      pft_exist(C3g_no) = .false.
 !      pft_exist(C4g_no) = .false.
 !      pft_exist(23)     = .false.
@@ -429,35 +429,35 @@ Enddo
 
 
 !   if     (a1<=2.0 .or. a2>=2000.0) then
-!      !ï¿½`ï¿½Vï¿½}ï¿½Uï¿½Tï¿½ÈŠOï¿½ÌƒTï¿½Tï¿½ï¿½OFF
+!      !ƒ`ƒVƒ}ƒUƒTˆÈŠO‚ÌƒTƒT‚ÍOFF
 !      pft_exist(24) = .false.
 !      pft_exist(25) = .false.
 !   elseif (a2>500.0) then
-!      !ï¿½Nï¿½}ï¿½Cï¿½Uï¿½Tï¿½ÈŠOï¿½ÌƒTï¿½Tï¿½ï¿½OFF
+!      !ƒNƒ}ƒCƒUƒTˆÈŠO‚ÌƒTƒT‚ÍOFF
 !      pft_exist(23) = .false.
 !      pft_exist(25) = .false.
 !   else
-!      !ï¿½~ï¿½ï¿½ï¿½Rï¿½Uï¿½Tï¿½ÈŠOï¿½ÌƒTï¿½Tï¿½ï¿½OFF
+!      !ƒ~ƒ„ƒRƒUƒTˆÈŠO‚ÌƒTƒT‚ÍOFF
 !      pft_exist(23) = .false.
 !      pft_exist(24) = .false.
 !   endif
 !   
-   if     (a1<=2.0 .or. a2>500.0) then
-      !ï¿½`ï¿½Vï¿½}ï¿½Uï¿½Tï¿½ÈŠOï¿½Ì‘ï¿½ï¿½{ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Aï¿½ï¿½ï¿½ï¿½OFF
+   if     (snowdepth_20yr_min>500.0) then
+      !ƒ`ƒVƒ}ƒUƒTˆÈŠO‚Ì‘–{ƒŒƒCƒ„[A•¨‚ÍOFF
       pft_exist(C3g_no) = .false.
       pft_exist(C4g_no) = .false.
       pft_exist(23)     = .true. 
       pft_exist(24)     = .false.
       pft_exist(25)     = .false.
 !   elseif (a2>500.0) then
-!      !ï¿½Nï¿½}ï¿½Cï¿½Uï¿½Tï¿½ÈŠOï¿½Ì‘ï¿½ï¿½{ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Aï¿½ï¿½ï¿½ï¿½OFF
+!      !ƒNƒ}ƒCƒUƒTˆÈŠO‚Ì‘–{ƒŒƒCƒ„[A•¨‚ÍOFF
 !      pft_exist(C3g_no) = .false.
 !      pft_exist(C4g_no) = .false.
 !      pft_exist(23)     = .false.
 !      pft_exist(24)     = .true. 
 !      pft_exist(25)     = .false.
    else
-      !ï¿½~ï¿½ï¿½ï¿½Rï¿½Uï¿½Tï¿½ÈŠOï¿½Ì‘ï¿½ï¿½{ï¿½ï¿½ï¿½Cï¿½ï¿½ï¿½[ï¿½Aï¿½ï¿½ï¿½ï¿½OFF
+      !ƒ~ƒ„ƒRƒUƒTˆÈŠO‚Ì‘–{ƒŒƒCƒ„[A•¨‚ÍOFF
       pft_exist(C3g_no) = .false.
       pft_exist(C4g_no) = .false.
       pft_exist(23)     = .false.
@@ -476,14 +476,14 @@ Do p=1, PFT_No
       endif
    End If
 
-!ï¿½`ï¿½Vï¿½}ï¿½Uï¿½Tï¿½ÈŠOï¿½ÌƒTï¿½Tï¿½Íï¿½ï¿½OFF ï¿½`ï¿½Vï¿½}ï¿½Uï¿½Tï¿½ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Í‚ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+!ƒ`ƒVƒ}ƒUƒTˆÈŠO‚ÌƒTƒT‚Íí‚ÉOFF ƒ`ƒVƒ}ƒUƒT‚¾‚¯‚É‚·‚é‚Æ‚«‚Í‚±‚Ì•”•ª‚ğg‚¤‚±‚Æ
 !      pft_exist(C3g_no) = .false.
 !      pft_exist(C4g_no) = .false.
 !      pft_exist(23)     = .true.
 !		 pft_exist(24)     = .false. 
 !      pft_exist(25)     = .false.
 
-!ï¿½~ï¿½ï¿½ï¿½Rï¿½Uï¿½Tï¿½ÈŠOï¿½ÌƒTï¿½Tï¿½Íï¿½ï¿½OFF ï¿½~ï¿½ï¿½ï¿½Rï¿½Uï¿½Tï¿½ï¿½ï¿½ï¿½ï¿½É‚ï¿½ï¿½ï¿½Æ‚ï¿½ï¿½Í‚ï¿½ï¿½Ì•ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+!ƒ~ƒ„ƒRƒUƒTˆÈŠO‚ÌƒTƒT‚Íí‚ÉOFF ƒ~ƒ„ƒRƒUƒT‚¾‚¯‚É‚·‚é‚Æ‚«‚Í‚±‚Ì•”•ª‚ğg‚¤‚±‚Æ
 !      pft_exist(C3g_no) = .false.
 !      pft_exist(C4g_no) = .false.
 !      pft_exist(23)     = .false.
@@ -1081,7 +1081,7 @@ real    cosine1, cosine2
       cohort_ca (id_location(no),id_layer(no)) = &
       cohort_ca (id_location(no),id_layer(no)) + &
       ( 25*(dbh_heartwood(no)+dbh_sapwood(no)) )**2 * PI / 4.0
-      !crown_area(no)ï¿½Ì‘ï¿½ï¿½ï¿½ÉAï¿½|ï¿½eï¿½ï¿½ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½fï¿½Ê–ÊÏ‚ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½
+      !crown_area(no)‚Ì‘ã‚í‚è‚ÉAƒ|ƒeƒ“ƒVƒƒƒ‹‚Ì÷Š¥’f–Ê–ÊÏ‚ğg‚Á‚½
       
    End if
    End do
