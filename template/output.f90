@@ -125,7 +125,7 @@ SUBROUTINE output_annual (Fn)
    real    mass_wood1     !total woody  biomass (g C / m2)
    real    mass_wood2     !Aboveground woody  biomass (g C / m2)
    real    mass_grass     !grass  biomass (g C / m2)
-!gmass_AGB‚ğ’Ç‰Á
+!gmass_AGBï¿½ï¿½Ç‰ï¿½
 	real	  gmass_AGB		  !grass	 aboveground biomass (gDM / m2)
 
 !gmass
@@ -148,7 +148,7 @@ SUBROUTINE output_annual (Fn)
    real x, y              !For general usage
    
 !_____________ Unit converter: gDM/stand -> MgC/ha
-  unit_conv = C_in_drymass * (100/Max_loc) * (100/Max_loc) / (1000*1000)		!(ŒÃ‚¢A’Ç‹L)
+  unit_conv = C_in_drymass * (100/Max_loc) * (100/Max_loc) / (1000*1000)		!(ï¿½Ã‚ï¿½ï¿½Aï¿½Ç‹L)
 
 
    
@@ -179,11 +179,11 @@ SUBROUTINE output_annual (Fn)
 !mass_grass: Grass biomass (gDM/stand)
    mass_grass = sum(gmass_leaf(:,:)) + sum(gmass_rod  (:,:)) + sum(gmass_croot    (:,:)) &
               + sum(gmass_root(:,:)) + sum(gmass_stock(:,:)) + sum(gmass_available(:,:))
-write(*,*) "Mass grass (Total grass biomass, MgC ha-1):", mass_grass/900 !’Ç‹L
-write(*,*) "Mass grass (Total grass biomass, MgC ha-1):", mass_grass
-write(*,*) "UnitConv:", unit_conv !’Ç‹L
+! write(*,*) "Mass grass (Total grass biomass, MgC ha-1):", mass_grass/900 !ï¿½Ç‹L
+! write(*,*) "Mass grass (Total grass biomass, MgC ha-1):", mass_grass
+! write(*,*) "UnitConv:", unit_conv !ï¿½Ç‹L
 
-!’Ç‹L@gmass_AGB: Grass AGB(gDM/stand)
+!ï¿½Ç‹Lï¿½@gmass_AGB: Grass AGB(gDM/stand)
    gmass_AGB = sum(gmass_leaf(:,:)) + sum(gmass_rod  (:,:)) + sum(gmass_croot    (:,:))
    lai_max_wood   = 0.0
    lai_max_grass  = 0.0
@@ -230,14 +230,14 @@ write(*,*) "UnitConv:", unit_conv !’Ç‹L
    'Year, TreeDensity, Heigh, DBH, BA, MassW, MassW_ag, MassG, Litter, SOM, GPP, NPP'
    write (Fn, '(79a)') &
 !	' , NEE, LAImax_W, LAImax_G, LAImean_W, LAImean_G, ccon, RO, Biome, ALD, ALD_DOY'
-   ' , NEE, LAImax_W, LAImax_G, LAImean_W, LAImean_G, ccon, RO, Biome, ALD, ALD_DOY, Min_20yrMaxsnow, Max_snow' !’Ç‹L
+   ' , NEE, LAImax_W, LAImax_G, LAImean_W, LAImean_G, ccon, RO, Biome, ALD, ALD_DOY, Min_20yrMaxsnow, Max_snow' !ï¿½Ç‹L
 
    end if
    
 !   write (Fn,'( i4,a, 2(f7.1,a), 2(f9.3,a), 5(f6.1,a), 2(f5.1,a), f6.1,a, 4(f5.1,a), (f5.1,a), f7.3,a, f6.1,a, 2(i3,a), i3)') &
 
 	write (Fn,'( i4,a, 2(f7.1,a), 2(f9.3,a), 5(f6.1,a), 2(f5.1,a), &
-					f6.1,a, 4(f5.1,a), (f5.1,a), f7.3,a, f6.1,a, 2(i3,a), i3, a, f6.2, a, f6.2)') & !’Ç‹L
+					f6.1,a, 4(f5.1,a), (f5.1,a), f7.3,a, f6.1,a, 2(i3,a), i3, a, f6.2, a, f6.2)') & !ï¿½Ç‹L
 
    year                                      , ',', & ! 1 Simulation year
    tree_counter * ( (100.0/Max_loc)**2 )     , ',', & ! 2 Tree density (ha-1)
@@ -248,7 +248,7 @@ write(*,*) "UnitConv:", unit_conv !’Ç‹L
    mass_wood2                     * unit_conv, ',', & ! 7 Above ground woody biomass (MgC ha-1)
 !   mass_grass                     * unit_conv, ',', & ! 8 Total grass biomass (MgC ha-1)
 	mass_grass                     * unit_conv, ',', & ! 8 Total grass biomass (gDM ha-1)
-	gmass_AGB                      * unit_conv, ',', & ! ’Ç‹L@gmass AGB(MgC ha-1)
+	gmass_AGB                      * unit_conv, ',', & ! ï¿½Ç‹Lï¿½@gmass AGB(MgC ha-1)
    pool_litter                    * unit_conv, ',', & ! 9 Litter carbon       (MgC ha-1)
    (pool_som_int + pool_som_slow) * unit_conv, ',', & !10 SOM carbon          (MgC ha-1)
    sum(gpp_RunningRecord (:,:))   * unit_conv, ',', & !11 GPP                 (MgC ha-1 yr-1)
@@ -264,8 +264,8 @@ write(*,*) "UnitConv:", unit_conv !’Ç‹L
    biome                                     , ',', & !20 Biome type
    ald                                       , ',', & !21 Annual Max of Active Layer Depth (Step)
    ald_doy                                   , ',', & !22 DOY of the ALD reached
-	snowdepth_20yr_min                        , ',', & !(’Ç‹L)23 Minimum value of maximum snow depth in 20 year
-   max_snowdepth_RunningRecord(1)                     !(’Ç‹L)24 Annual maximum snow depth 
+	snowdepth_20yr_min                        , ',', & !(ï¿½Ç‹L)23 Minimum value of maximum snow depth in 20 year
+   max_snowdepth_RunningRecord(1)                     !(ï¿½Ç‹L)24 Annual maximum snow depth 
    
    
 END SUBROUTINE output_annual
@@ -626,7 +626,7 @@ END SUBROUTINE output_wflux
 
 !**************************************************************************************************
 ! Output vertical leaf distribution
-!o—Í‚·‚éPFT‚É‰‚¶‚ÄAƒR[ƒh‚ğ•ÏX‚·‚é•K—v‚ª‚ ‚è‚Ü‚·
+!ï¿½oï¿½Í‚ï¿½ï¿½ï¿½PFTï¿½É‰ï¿½ï¿½ï¿½ï¿½ÄAï¿½Rï¿½[ï¿½hï¿½ï¿½ÏXï¿½ï¿½ï¿½ï¿½Kï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½
 !**************************************************************************************************
 SUBROUTINE output_ld_vertical (Fn)
 
@@ -718,15 +718,15 @@ SUBROUTINE output_grass (Fn)
    phenology_symbol='-' ; if (phenology(p)) phenology_symbol='*'
    
 !_________________ Write title
-!if(doy == 350) then	!’Ç‹L
-!	if(year == 1) then	!’Ç‹L
-   if (year==1 .and. doy==1) then !‚Ş‚©‚µ
+!if(doy == 350) then	!ï¿½Ç‹L
+!	if(year == 1) then	!ï¿½Ç‹L
+   if (year==1 .and. doy==1) then !ï¿½Ş‚ï¿½ï¿½ï¿½
    write (Fn,*) ' Yr doy pt       F    Rod   Root   S    Av   GAGB   GB   Sd   lai lai_o'
    end if
    
 !_________________ Write data
 
-!   write (Fn,'( i3 , i4 , i3 , a3, 7f6.0, 2f5.1 )') &(‚Ş‚©‚µ)
+!   write (Fn,'( i3 , i4 , i3 , a3, 7f6.0, 2f5.1 )') &(ï¿½Ş‚ï¿½ï¿½ï¿½)
 
 write (Fn,'( i3, ",", i4, ",", i3, ",", a3, ",", 9(f10.2, ","), 2(f7.2, ",") )') &
    year, doy, p, phenology_symbol, &
@@ -736,13 +736,13 @@ write (Fn,'( i3, ",", i4, ",", i3, ",", a3, ",", 9(f10.2, ","), 2(f7.2, ",") )')
    sum(gmass_root      (:,:))             /Max_loc/Max_loc, & !Biomass Root       
    sum(gmass_stock     (:,:))             /Max_loc/Max_loc, & !Biomass Stock      
    sum(gmass_available (:,:))             /Max_loc/Max_loc, & !Biomass Available  
-	(sum(gmass_leaf      (:,:))+sum(gmass_rod       (:,:)))/Max_loc/Max_loc, & !‚Â‚¢‚«
+	(sum(gmass_leaf      (:,:))+sum(gmass_rod       (:,:)))/Max_loc/Max_loc, & !ï¿½Â‚ï¿½ï¿½ï¿½
 	(sum(gmass_leaf(:,:)) + sum(gmass_rod(:,:)) + sum(gmass_croot(:,:)) + sum(gmass_root(:,:)) &
- 	+ sum(gmass_stock(:,:)) + sum(gmass_available(:,:))) / Max_loc / Max_loc, & !‚Â‚¢‚«
+ 	+ sum(gmass_stock(:,:)) + sum(gmass_available(:,:))) / Max_loc / Max_loc, & !ï¿½Â‚ï¿½ï¿½ï¿½
    pool_fuel_standG                       /Max_loc/Max_loc, & !Standing dead
    sum(lai_grass    (:,:))                /DivedG /DivedG , & !Grass LAI
    sum(lai_opt_grass_RunningRecord(1,:,:))/DivedG /DivedG     !Optimum grass LAI
-!end if	!’Ç‹L
+!end if	!ï¿½Ç‹L
 END SUBROUTINE output_grass
 
 
