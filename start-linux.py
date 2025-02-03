@@ -5,13 +5,13 @@ import shutil
 import subprocess
 import argparse
 
-def run_a_exe(instance, folder, queue, output_file_path):
+def run_a_exe(instance, folder, queue, output_file_path, output_file_name):
     print(f"Instance {instance} running in folder {folder}")
     subprocess.run(["./a.exe"], cwd=folder, check=True)
 
     print(f"Instance {instance} completed.")
     print("Current working directory:", os.getcwd())
-    fn_biomass_file = os.path.join(folder, "output_annual.txt")
+    fn_biomass_file = os.path.join(folder, output_file_name)
     print("fn_biomass_file:", fn_biomass_file)
 
     # The folder path for the final output file
@@ -20,7 +20,7 @@ def run_a_exe(instance, folder, queue, output_file_path):
     if os.path.exists(fn_biomass_file):
         print("Copying output_annual.txt to output folder")
         shutil.copy(fn_biomass_file, output_folder)
-        os.rename(os.path.join(output_folder, "output_annual.txt"), output_file_path)
+        os.rename(os.path.join(output_folder, output_file_name), output_file_path)
         os.remove(fn_biomass_file)
 
     queue.put(folder)
@@ -109,8 +109,9 @@ if __name__ == "__main__":
             if not os.path.exists(output_folder):
                 os.makedirs(output_folder)
 
+            output_file_name = "output_water.txt"
             instance = len(processes)
-            p = Process(target=run_a_exe, args=(instance, folder, available_folders, output_file_path))
+            p = Process(target=run_a_exe, args=(instance, folder, available_folders, output_file_path, output_file_name))
             processes.append(p)
             p.start()
 
