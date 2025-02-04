@@ -18,7 +18,7 @@ def run_a_exe(instance, folder, queue, output_file_path, output_file_name):
     output_folder = os.path.dirname(output_file_path)
 
     if os.path.exists(fn_biomass_file):
-        print("Copying output_annual.txt to output folder")
+        print(f"Copying {output_file_name}.txt to output folder")
         shutil.copy(fn_biomass_file, output_folder)
         os.rename(os.path.join(output_folder, output_file_name), output_file_path)
         os.remove(fn_biomass_file)
