@@ -1,6 +1,6 @@
 !*** NOTE ***
 !In case of the Intel Fortran compiler, use the option '-assume byterecl' as fillows.
-!Å@Å@Å@ifort start_point.f90 -o go.out -assume byterecl
+!ÔøΩ@ÔøΩ@ÔøΩ@ifort start_point.f90 -o go.out -assume byterecl
 
 !*************************************************************************************************
 ! Start up procedures for selected sites
@@ -259,42 +259,42 @@ real out1, out2        !output values
    
 !_____________ Display Simulation Conditions
    !Print location properties
-   write (*,*)
-   write (*,*) '*********  Coodinate Configurations  *********'
-   write (*,*) 'Latitude, Longtitude   :', LAT, LON
-   write (*,*) 'Point nomal            :', point
-   write (*,*)
+   ! write (*,*)
+   ! write (*,*) '*********  Coodinate Configurations  *********'
+   ! write (*,*) 'Latitude, Longtitude   :', LAT, LON
+   ! write (*,*) 'Point nomal            :', point
+   ! write (*,*)
    
    !Print soil properties
-   write (*,*) '*********  Location properties  *********'
-   write (*,*) 'Altitude    :', ALT         
-   write (*,*) 'Albedo_soil0:', Albedo_soil0
-   write (*,*) 'W_sat       :', W_sat       
-   write (*,*) 'W_fi        :', W_fi        
-   write (*,*) 'W_wilt      :', W_wilt      
-   write (*,*)                              
+   ! write (*,*) '*********  Location properties  *********'
+   ! write (*,*) 'Altitude    :', ALT         
+   ! write (*,*) 'Albedo_soil0:', Albedo_soil0
+   ! write (*,*) 'W_sat       :', W_sat       
+   ! write (*,*) 'W_fi        :', W_fi        
+   ! write (*,*) 'W_wilt      :', W_wilt      
+   ! write (*,*)                              
    
    !Print climate properties
    x = real(Day_in_Year * YearMaxClimate)
    
-   write (*,*) '*********  Wether statistics (annual mean of the all years)  *********'
-   write (*,*) '2m air temperature  (Cecius)  :', sum(tmp_air  (:,:)) / x
-   write (*,*) 'precipitation       (mm/year) :', sum(prec     (:,:)) / real(YearMaxClimate)
-   write (*,*) 'Relative humidity   (%)       :', sum(rh       (:,:)) / x
-   write (*,*) 'wind                (m/s)     :', sum(wind     (:,:)) / x
-   write (*,*) 
+   ! write (*,*) '*********  Wether statistics (annual mean of the all years)  *********'
+   ! write (*,*) '2m air temperature  (Cecius)  :', sum(tmp_air  (:,:)) / x
+   ! write (*,*) 'precipitation       (mm/year) :', sum(prec     (:,:)) / real(YearMaxClimate)
+   ! write (*,*) 'Relative humidity   (%)       :', sum(rh       (:,:)) / x
+   ! write (*,*) 'wind                (m/s)     :', sum(wind     (:,:)) / x
+   ! write (*,*) 
    
 !_____________ Simulation
    !Call simulation loop
    IF (Mask==0 .or. Albedo_soil0<=0.0 .or. W_sat<=0.0 .or. W_fi<=0.0 .or. W_wilt<=0.0 ) then
       write(*,*) 'Error: Invalid location properties'
    ELSE
-      write (*,*) '*********  Now simulating  *********'
+      ! write (*,*) '*********  Now simulating  *********'
 
 ![OPTION] For Hokkaido Japan (See Sato et al., 2023 Ecol. Res. for detail)
- CTI_dif = 0.0 !Grid average            ÅiCTI= 4.7          Åj
-!CTI_dif = 1.1 !For relatively dry plotsÅiCTI= 4.7-1.1 = 3.6Åj
-!CTI_dif =-2.5 !For relatively wet plots (CTI= 4.7+2.5 = 7.2Åj
+ CTI_dif = 0.0 !Grid average            ÔøΩiCTI= 4.7          ÔøΩj
+!CTI_dif = 1.1 !For relatively dry plotsÔøΩiCTI= 4.7-1.1 = 3.6ÔøΩj
+!CTI_dif =-2.5 !For relatively wet plots (CTI= 4.7+2.5 = 7.2ÔøΩj
 
    Call main_loop ( &
    LAT, LON, GlobalZone, YearMaxClimate, YearMaxCO2, &
