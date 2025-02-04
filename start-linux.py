@@ -109,7 +109,7 @@ if __name__ == "__main__":
             if not os.path.exists(output_folder):
                 os.makedirs(output_folder)
 
-            output_file_name = "output_water.txt"
+            output_file_name = "output_annual.txt"
             instance = len(processes)
             p = Process(target=run_a_exe, args=(instance, folder, available_folders, output_file_path, output_file_name))
             processes.append(p)

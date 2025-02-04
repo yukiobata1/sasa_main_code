@@ -249,13 +249,13 @@ SUBROUTINE main_loop ( &
    real:: SMCDRY    = 0.0
    real:: PTU       = 0.0
    
-   !Daily sumup‚Ì‚½‚ß‚É²“¡‚ª’Ç‰Á‚µ‚½•Ï”
-   real:: ETP_sum     = 0.0 !öİö”­U—Ê (W M-2‚ğmm/day‚É•ÏŠ·‚µ‚½)
-   real:: EC_sum      = 0.0 !CANOPY WATER EVAPORATION  (“¯ã)
-   real:: EDIR_sum    = 0.0 !DIRECT SOIL EVAPORATION   (“¯ã)
-   real:: ETT_sum     = 0.0 !TOTAL PLANT TRANSPIRATION (“¯ã)
-   real:: ESNOW_sum   = 0.0 !SUBLIMATION FROM SNOWPACK (“¯ã)
-   real:: SNOMLT_sum  = 0.0 !SNOW MELT (“¯ã)
+   !Daily sumupï¿½Ì‚ï¿½ï¿½ß‚Éï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïï¿½
+   real:: ETP_sum     = 0.0 !ï¿½ï¿½ï¿½İï¿½ï¿½ï¿½ï¿½Uï¿½ï¿½ (W M-2ï¿½ï¿½mm/dayï¿½É•ÏŠï¿½ï¿½ï¿½ï¿½ï¿½)
+   real:: EC_sum      = 0.0 !CANOPY WATER EVAPORATION  (ï¿½ï¿½ï¿½ï¿½)
+   real:: EDIR_sum    = 0.0 !DIRECT SOIL EVAPORATION   (ï¿½ï¿½ï¿½ï¿½)
+   real:: ETT_sum     = 0.0 !TOTAL PLANT TRANSPIRATION (ï¿½ï¿½ï¿½ï¿½)
+   real:: ESNOW_sum   = 0.0 !SUBLIMATION FROM SNOWPACK (ï¿½ï¿½ï¿½ï¿½)
+   real:: SNOMLT_sum  = 0.0 !SNOW MELT (ï¿½ï¿½ï¿½ï¿½)
    real:: RUNOFF1_sum = 0.0
    real:: RUNOFF2_sum = 0.0
    real:: SHEAT_sum   = 0.0
@@ -264,7 +264,7 @@ SUBROUTINE main_loop ( &
    real:: ETA_sum     = 0.0
    
 !Exchange soil properties when NOAH-module is activated
-   INTEGER SOILTYP  !Soil type index 1-9 (10”Ô‚É“Æ©‚Ì’l‚ğ“ü—Í‚µ‚½)
+   INTEGER SOILTYP  !Soil type index 1-9 (10ï¿½Ô‚É“Æï¿½ï¿½Ì’lï¿½ï¿½ï¿½ï¿½Í‚ï¿½ï¿½ï¿½)
 ! SOIL TYPES   ZOBLER (1986)	  COSBY ET AL (1984) (quartz cont.(1))
 !  1	    COARSE	      LOAMY SAND	 (0.82)
 !  2	    MEDIUM	      SILTY CLAY LOAM	 (0.10)
@@ -334,13 +334,13 @@ SUBROUTINE main_loop ( &
       SOILM = SOILM + SLDPTH(i)*SMC(i) !TOTAL SOIL COLUMN WATER CONTENT in M
    end do
    
-   LVH2O =  2.4501000E+6 !Vaporization heat for water at 20C (J/Kg H2Oj
+   LVH2O =  2.4501000E+6 !Vaporization heat for water at 20C (J/Kg H2Oï¿½j
    
 !_____________ Intialize variables
 !Initialize variables
    Call init_value (W_fi, tmp_air(:,1), tmp_soil(:,1,:), prec(:,1))
    Call radiation_seasonal_change (LAT)
-   !’Ç‰Á!ƒfƒoƒbƒN‚Ì‚½‚ß‚É‹Lq
+   !ï¿½Ç‰ï¿½!ï¿½fï¿½oï¿½bï¿½Nï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !WRITE(*, *)'initialize'
 !Read spinup files
    Spinup_year  = 0
@@ -407,12 +407,12 @@ END IF
 !This loop corresponds to a simulation day, which calls subroutines sequentially.
 !For readability of the code, I tried to avoid to call another subroutine 
 !from the subroutine that was called from this loop.
-!ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+!ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !WRITE(*, *) 'field statuses'
 
 DO counter = counter_begin, counter_end
 
-!ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+!ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !   WRITE(*, *) 'daily loop started'
 
    
@@ -461,11 +461,11 @@ ELSE
    end do
 ENDIF
    
-!ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+!ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !   WRITE(*, *) 'Flag A'
 
 
-!’Ç‰Á!á‚ª~‚Á‚Ä‚à“€‚ç‚È‚¢, ƒRƒƒ“ƒgƒAƒEƒg
+!ï¿½Ç‰ï¿½!ï¿½á‚ªï¿½~ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½, ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½gï¿½Aï¿½Eï¿½g
 !_____________ Daily update of metabolic status
 !stat_water(1:PFT_no), a vegetation growth limitter due to soil water shortage
    Do p = 1, PFT_no
@@ -474,7 +474,7 @@ ENDIF
       
       !Default
       do i=1, max(1,RootDepth(p))
-!’Ç‰Á!á‚ª~‚Á‚Ä‚à“€‚ç‚È‚¢
+!ï¿½Ç‰ï¿½!ï¿½á‚ªï¿½~ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½
       if (tmp_soil_Today(i)<=0.0) cycle
          no = no + 1
          x  = x + (pool_w(i)/Depth - W_wilt) / max(W_fi-W_wilt, 0.001)
@@ -487,7 +487,7 @@ ENDIF
 !'0.025' in the following equation is just only a tuning parameter
 stat_water(p) = stat_water(p) / (1 + 0.025 * CTI_dif)
 stat_water(p) = min(1.0, max(0.0, stat_water(p)))
-!’Ç‰Á!Œ´ˆö’Tõ‚Ì‚½‚ß
+!ï¿½Ç‰ï¿½!ï¿½ï¿½ï¿½ï¿½ï¿½Tï¿½ï¿½ï¿½Ì‚ï¿½ï¿½ï¿½
 !      stat_water(p) = 0.98
 
    End do
@@ -525,7 +525,7 @@ stat_water(p) = min(1.0, max(0.0, stat_water(p)))
       mort_regu4(:) = 0.0 !stem diameter increament in last year (m year-1)
    endif
    
-!ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+!ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !   WRITE(*, *) 'Flag B'
 
 
@@ -555,7 +555,7 @@ stat_water(p) = min(1.0, max(0.0, stat_water(p)))
       
    endif
 
-   !ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+   !ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !   WRITE(*, *) 'Flag C'
 
 !   !Wild fire subroutines
@@ -584,7 +584,7 @@ IF (Flag_land_physics) THEN
 !   n = 0
 !   do i=1, Dived
 !   do j=1, Dived
-!       if (par_floor_rel(i,j)<=0.951229) n=n+1 !LAI=0.1ˆÈã‚É‘Š“–
+!       if (par_floor_rel(i,j)<=0.951229) n=n+1 !LAI=0.1ï¿½Èï¿½É‘ï¿½ï¿½ï¿½
 !   enddo
 !   enddo
 !   if (n<=Dived) then
@@ -618,7 +618,7 @@ IF (Flag_land_physics) THEN
       case  default; VEGTYP = 11! 11: BARE SOIL
       end select
    
-![OPTIONAL] NOAH‚Ìƒpƒ‰ƒ[ƒ^[‚ğƒJƒ‰ƒ}ƒc—Ñ‚ÅŒÅ’è‚·‚éê‡
+![OPTIONAL] NOAHï¿½Ìƒpï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½^ï¿½[ï¿½ï¿½ï¿½Jï¿½ï¿½ï¿½}ï¿½cï¿½Ñ‚ÅŒÅ’è‚·ï¿½ï¿½ê‡
 !     VEGTYP = 5       !@forest (5 -> NEEDLELEAF-DECIDUOUS TREES (LARCH))
    
    if (VEGTYP==13 .or. VEGTYP==11 .or. VEGTYP==10 .or. VEGTYP==7) then
@@ -637,7 +637,7 @@ IF (Flag_land_physics) THEN
       NROOT = 5        !@forest
    endif
    
-   !ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+   !ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !   WRITE(*, *) 'Flag D'
 
    !For regulating heat conductance of the top-soil-layer by litter amount
@@ -647,10 +647,10 @@ IF (Flag_land_physics) THEN
       
       DF1_given = 0.17 - 0.05 * (x/10.0)
       DF1_given = max( 0.01 , DF1_given )
-!ƒTƒTƒ‚ƒfƒ‹‚ÅƒŠƒ^[‚ª’~Ï‚µ‚·‚¬‚é‚½‚ß“yë‚ª—Z‰ğ‚µ‚È‚­‚È‚è’Ç‰Á
+!ï¿½Tï¿½Tï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Åƒï¿½ï¿½^ï¿½[ï¿½ï¿½ï¿½~ï¿½Ï‚ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½é‚½ï¿½ß“yï¿½ë‚ªï¿½Zï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½Ç‰ï¿½
 	DF1_given = 0.4
 
-   !ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+   !ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !   WRITE(*, *) 'Flag E'
 
 !Each TimeStep Loop
@@ -709,7 +709,7 @@ DO TimeStep= 1, TimeStepMax
    !SNOW COVER, ALBEDO OVER LAND
    ! This equation is taken from P29 of Oleson, K. W., et al. (2004)
    ! Technical description of the Community Land Model (CLM),
-   ! Tech. Note NCARTN]461+STR, 174 pp., Natl. Cent. for Atmos. Res., Boulder, Colo.
+   ! Tech. Note NCARTNï¿½]461+STR, 174 pp., Natl. Cent. for Atmos. Res., Boulder, Colo.
    IF (SNEQV == 0.0) THEN
       SNCOVR = 0.0
       ALBEDO = ALB
@@ -925,7 +925,7 @@ IF ( doy==Day_in_Year ) then
       endif
    enddo
 
-      !ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+      !ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !   WRITE(*, *) 'Flag F'
 
    !Determine which tree die
@@ -955,7 +955,7 @@ IF ( doy==Day_in_Year ) then
    Call crown_coverage ()
 
 
-   !ƒTƒT‚ÌˆêÄŠJ‰Ô
+   !ï¿½Tï¿½Tï¿½Ìˆï¿½ÄŠJï¿½ï¿½
    if (mod(year,120)==1) then
       Call sasa_bloom ()
       Call grass_priority () !Determine dominant grass PFT in the next year
@@ -1021,7 +1021,7 @@ END IF
    FUP_sum     = 0.0
    ETA_sum     = 0.0
 
-   !ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+   !ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !   WRITE(*, *) 'Flag G'
 
 !_____________ MAKE OUTPUT FILES (Write simulation results in output files)
@@ -1033,7 +1033,7 @@ IF (Flag_output_write) then
    tmp_air_Today, &
    sum(tmp_soil_Today(1:5))/5.0, sum(tmp_soil_Today(6:10))/5.0, sum(tmp_soil_Today(11:20))/10.0, &
    prec_Today, rh_Today, cloud, rad_short_Today, rad_long_Today, wind_Today)
-!ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+!ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !      WRITE(*, *) 'Flag G-1'
    !Daily output
 !   If ( year>Simulation_year-10) then !during the last 10 years
@@ -1041,13 +1041,13 @@ IF (Flag_output_write) then
       Call output_climate &
       (File_no(3), cloud, prec_Today, rh_Today, wind_Today, tmp_air_Today, &
       sum(tmp_soil_Today(1:5))/5.0, rad_short_Today, rad_long_Today)
-      !ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+      !ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 
       Call output_air          (File_no(4))
-!ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+!ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !      WRITE(*, *) 'Flag G-2'
       Call output_radiation    (File_no(5), rad_short_Today)
-!ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+!ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !      WRITE(*, *) 'Flag G-3' 
       Call output_water        (File_no(6), W_fi, W_wilt, W_sat)
 !      WRITE(*, *) 'Flag G-4'
@@ -1059,7 +1059,7 @@ IF (Flag_output_write) then
       Call output_gpp          (File_no(17))
       Call output_statwater    (File_no(18))
    End If
-      !ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+      !ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !   WRITE(*, *) 'Flag H'
 
    !When the NOAH-LSM treats land-physics, 
@@ -1091,12 +1091,12 @@ IF (Flag_output_write) then
 
 ENDIF
 
-   !ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+   !ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !   WRITE(*, *) 'Flag I'
 
 
 !****** TMP [Sasa Extension]
-!ƒRƒ“ƒ\[ƒ‹o—ÍDOY‚Í‚±‚±
+!ï¿½Rï¿½ï¿½ï¿½\ï¿½[ï¿½ï¿½ï¿½oï¿½ï¿½DOYï¿½Í‚ï¿½ï¿½ï¿½
 if (IMONTH==12 .and. IDAY==16) then !On 1 August
    !a1: mean annual air-temperature
    a1 = sum(tmp_air_RunningRecord(1:Day_in_year)) / Day_in_year
@@ -1115,19 +1115,19 @@ if (IMONTH==12 .and. IDAY==16) then !On 1 August
    enddo
    
    !Write variables
-   write(*,*) 
-   write(*,*) "Simulation Year", year
-   write(*,*) "DOY", doy
-   write(*,*) "Dominant PFT under canopy", p
-   write(*,*) "LAI (m2/m2)", lai_RunningRecord (doy, p)
-   write(*,*) "Maximum snow height in the last 365 days (mm)", a2
-   write(*,*) "grass foliage     biomass (gDM/cell)", sum(gmass_leaf     (:,:))/real(DivedG*DivedG)
-   write(*,*) "grass rod         biomass (gDM/cell)", sum(gmass_rod      (:,:))/real(DivedG*DivedG)
-   write(*,*) "grass coarse root biomass (gDM/cell)", sum(gmass_croot    (:,:))/real(DivedG*DivedG)
-   write(*,*) "grass fine root   biomass (gDM/cell)", sum(gmass_root     (:,:))/real(DivedG*DivedG)
-   write(*,*) "grass available   biomass (gDM/cell)", sum(gmass_available(:,:))/real(DivedG*DivedG)
-   write(*,*) "grass stock       biomass (gDM/cell)", sum(gmass_stock    (:,:))/real(DivedG*DivedG)
-   write(*,*) "leaf area index of grass (m2/m2)"    , sum(lai_grass      (:,:))/real(DivedG*DivedG)
+   ! write(*,*) 
+   ! write(*,*) "Simulation Year", year
+   ! write(*,*) "DOY", doy
+   ! write(*,*) "Dominant PFT under canopy", p
+   ! write(*,*) "LAI (m2/m2)", lai_RunningRecord (doy, p)
+   ! write(*,*) "Maximum snow height in the last 365 days (mm)", a2
+   ! write(*,*) "grass foliage     biomass (gDM/cell)", sum(gmass_leaf     (:,:))/real(DivedG*DivedG)
+   ! write(*,*) "grass rod         biomass (gDM/cell)", sum(gmass_rod      (:,:))/real(DivedG*DivedG)
+   ! write(*,*) "grass coarse root biomass (gDM/cell)", sum(gmass_croot    (:,:))/real(DivedG*DivedG)
+   ! write(*,*) "grass fine root   biomass (gDM/cell)", sum(gmass_root     (:,:))/real(DivedG*DivedG)
+   ! write(*,*) "grass available   biomass (gDM/cell)", sum(gmass_available(:,:))/real(DivedG*DivedG)
+   ! write(*,*) "grass stock       biomass (gDM/cell)", sum(gmass_stock    (:,:))/real(DivedG*DivedG)
+   ! write(*,*) "leaf area index of grass (m2/m2)"    , sum(lai_grass      (:,:))/real(DivedG*DivedG)
 
 endif
 
@@ -1218,7 +1218,7 @@ SUBROUTINE radiation_daily_change (LAT, TimeStepMax, RadShortWeight)
    !Initialize
    RadShortWeight (:,:) = 0.0
 
-!ƒfƒoƒbƒO‚Ì‚½‚ß‚É‹Lq
+!ï¿½fï¿½oï¿½bï¿½Oï¿½Ì‚ï¿½ï¿½ß‚É‹Lï¿½q
 !WRITE(*, *) 'Radiation Daily Change'
 Do doy  =    1,  365
    if (dlen(doy)<1.0) cycle
@@ -1229,7 +1229,7 @@ Do doy  =    1,  365
    !Sunset time @ TimeStepMax
    a2 = 0.5*( 24.0+dlen(doy) ) * real(TimeStepMax)/24.0
    
-   !RadShortWeight: Weighting factor for daily changes in shortwave radiationirangeF0.0`1.0j
+   !RadShortWeight: Weighting factor for daily changes in shortwave radiationï¿½irangeï¿½F0.0ï¿½`1.0ï¿½j
    Do TimeStep = 1, TimeStepMax
       x = real(TimeStep)
       If (x < a1) cycle !From midnight until sun break
@@ -1397,7 +1397,7 @@ END SUBROUTINE climate_convert
 
 
 
-! š‚±‚±‚©‚ç‰º‚ÌƒTƒuƒ‹[ƒ`ƒ“‚ÍAƒR[ƒh®—‚ğs‚Á‚Ä‚¢‚È‚¢
+! ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç‰ºï¿½ÌƒTï¿½uï¿½ï¿½ï¿½[ï¿½`ï¿½ï¿½ï¿½ÍAï¿½Rï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½
 !*****************************************************************************
 FUNCTION DQS (T,LVH2O) 
    IMPLICIT NONE
