@@ -13,7 +13,7 @@
 	File_no           = 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
                             31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
                             41, 42, 43, 44, 45,
-        Fn_climate  = '64530_furano_m2.txt',
+        Fn_climate  = 'job.csv',
         Fn_CO2      = 'co2_1850_2005_hist.dat',
         Fn_location = 'land_prop.txt',
         Fn_spnin    = 'spn_in.dat' ,
@@ -403,9 +403,9 @@ Plant Functional Type assignated for each number (abbreviation)
 21: Temperate herbaceous(C3)		(TeH)
 22: Tropical herbaceous(C4)		(TrH)
 
-23: Cold Temperate dwarf bamboo (Sasa kurilensis, ƒ`ƒVƒ}ƒUƒT)
-24: Cold Temperate dwarf bamboo (Sasa senanensis, ƒNƒ}ƒCƒUƒT)
-25: Cold Temperate dwarf bamboo (Sasa nipponica,  ƒ~ƒ„ƒRƒUƒT)
+23: Cold Temperate dwarf bamboo (Sasa kurilensis, ï¿½`ï¿½Vï¿½}ï¿½Uï¿½T)
+24: Cold Temperate dwarf bamboo (Sasa senanensis, ï¿½Nï¿½}ï¿½Cï¿½Uï¿½T)
+25: Cold Temperate dwarf bamboo (Sasa nipponica,  ï¿½~ï¿½ï¿½ï¿½Rï¿½Uï¿½T)
 ********************************************************************
 
 ********************************************************************
