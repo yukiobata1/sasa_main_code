@@ -374,7 +374,7 @@ SUBROUTINE waterbudget (W_fi, W_wilt, prec, wind, tmp_air, tmp_soil)
    !x: proportion of snow in precipitation
    x = 1.0 / ( 1.0 + exp(0.75*tmp_air - 1.5) )
    
-   !y: proportion of snow melt in this day: Ito et al(visit model)‚©‚ç
+   !y: proportion of snow melt in this day: Ito et al(visit model)ï¿½ï¿½ï¿½ï¿½
    y = 1.0 / ( 1.0 + exp( -0.3*(tmp_soil(1)-10.0) ) )
    
    !water balance
@@ -384,6 +384,8 @@ SUBROUTINE waterbudget (W_fi, W_wilt, prec, wind, tmp_air, tmp_soil)
    
    flux_tw     = pool_snow  * y
    pool_snow   = pool_snow - flux_tw
+
+	
    
 !   !Water-leakage checker #1
 !   y = flux_rain + flux_tw + pool_snow + sum(pool_w(:))
