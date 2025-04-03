@@ -5,23 +5,43 @@ import shutil
 import subprocess
 import argparse
 
-def run_a_exe(instance, folder, queue, output_file_path, output_file_name):
+def run_a_exe(instance, folder, queue, output_annual_path, output_climate_path):
     print(f"Instance {instance} running in folder {folder}")
     subprocess.run(["./a.exe"], cwd=folder, check=True)
 
     print(f"Instance {instance} completed.")
     print("Current working directory:", os.getcwd())
-    fn_biomass_file = os.path.join(folder, output_file_name)
-    print("fn_biomass_file:", fn_biomass_file)
+    
+    # 両方の出力ファイルのパスを設定
+    fn_annual_file = os.path.join(folder, "output_annual.txt")
+    fn_climate_file = os.path.join(folder, "output_climate.txt")
+    
+    print(f"fn_annual_file: {fn_annual_file}")
+    print(f"fn_climate_file: {fn_climate_file}")
 
-    # The folder path for the final output file
-    output_folder = os.path.dirname(output_file_path)
+    # output_annual.txt の処理
+    if os.path.exists(fn_annual_file):
+        # 出力フォルダの作成
+        output_annual_folder = os.path.dirname(output_annual_path)
+        if not os.path.exists(output_annual_folder):
+            os.makedirs(output_annual_folder)
+            
+        print(f"Copying output_annual.txt to {output_annual_path}")
+        shutil.copy(fn_annual_file, output_annual_folder)
+        os.rename(os.path.join(output_annual_folder, "output_annual.txt"), output_annual_path)
+        os.remove(fn_annual_file)
 
-    if os.path.exists(fn_biomass_file):
-        print(f"Copying {output_file_name}.txt to output folder")
-        shutil.copy(fn_biomass_file, output_folder)
-        os.rename(os.path.join(output_folder, output_file_name), output_file_path)
-        os.remove(fn_biomass_file)
+    # output_climate.txt の処理
+    if os.path.exists(fn_climate_file):
+        # 出力フォルダの作成
+        output_climate_folder = os.path.dirname(output_climate_path)
+        if not os.path.exists(output_climate_folder):
+            os.makedirs(output_climate_folder)
+            
+        print(f"Copying output_climate.txt to {output_climate_path}")
+        shutil.copy(fn_climate_file, output_climate_folder)
+        os.rename(os.path.join(output_climate_folder, "output_climate.txt"), output_climate_path)
+        os.remove(fn_climate_file)
 
     queue.put(folder)
 
@@ -65,17 +85,26 @@ if __name__ == "__main__":
 
         available_folders.put(folder)
 
-    # Here is the key change: instead of "./output", we'll point to "/mnt/newvolume".
+    # 出力用の親フォルダをタイプごとに設定
+    output_base = "/home/ec2-user/sasa_main_code/output"
+    output_annual_base = os.path.join(output_base, "output_annual")
+    output_climate_base = os.path.join(output_base, "output_climate")
+    
+    # 入力データ用の親フォルダ
     parent_folders = ["future_c1_conv", "future_c2_conv", "future_c3_conv", "hist_conv"]
     
     for parent in parent_folders:
-        # Keep the parent path for input data the same
+        # 入力データのパス
         parent_path = f"./{parent}"
 
-        # Change to desired output location
-        output_parent_folder = os.path.join("/home/ec2-user/sasa_main_code/output", parent)
-        if not os.path.exists(output_parent_folder):
-            os.makedirs(output_parent_folder)
+        # 出力先フォルダの作成
+        output_annual_parent = os.path.join(output_annual_base, parent)
+        output_climate_parent = os.path.join(output_climate_base, parent)
+        
+        if not os.path.exists(output_annual_parent):
+            os.makedirs(output_annual_parent)
+        if not os.path.exists(output_climate_parent):
+            os.makedirs(output_climate_parent)
 
         subfolders = glob.glob(os.path.join(parent_path, "*"))
         files_to_process = []
@@ -95,23 +124,36 @@ if __name__ == "__main__":
                 os.remove(new_file_name)
             os.rename(copied_file, new_file_name)
 
-            # Build the path in the new output folder (/mnt/newvolume)
-            # Note: file[2:] removes the leading "./" from the input file path
-            output_file_path = os.path.join("/", file[2:])
-            print("output_file_path:", output_file_path)
+            # ファイル名から相対パスを取得（最初の"./"を削除）
+            rel_path = file[2:]
+            
+            # 出力ファイルのパスを作成
+            file_name = os.path.basename(rel_path)
+            rel_dir = os.path.dirname(rel_path)
+            
+            # 各出力ファイルのパスを設定
+            output_annual_path = os.path.join(output_annual_base, rel_dir, file_name.replace(".csv", ".txt"))
+            output_climate_path = os.path.join(output_climate_base, rel_dir, file_name.replace(".csv", ".txt"))
+            
+            print(f"output_annual_path: {output_annual_path}")
+            print(f"output_climate_path: {output_climate_path}")
 
-            output_folder = os.path.dirname(output_file_path)
-            if os.path.exists(output_file_path):
-                # If we already have the file, return the folder to the queue
+            # すでに両方のファイルが存在する場合は処理をスキップ
+            if os.path.exists(output_annual_path) and os.path.exists(output_climate_path):
                 available_folders.put(folder)
                 continue
 
-            if not os.path.exists(output_folder):
-                os.makedirs(output_folder)
+            # 出力ディレクトリの確認
+            annual_output_folder = os.path.dirname(output_annual_path)
+            climate_output_folder = os.path.dirname(output_climate_path)
+            
+            if not os.path.exists(annual_output_folder):
+                os.makedirs(annual_output_folder)
+            if not os.path.exists(climate_output_folder):
+                os.makedirs(climate_output_folder)
 
-            output_file_name = "output_annual.txt"
             instance = len(processes)
-            p = Process(target=run_a_exe, args=(instance, folder, available_folders, output_file_path, output_file_name))
+            p = Process(target=run_a_exe, args=(instance, folder, available_folders, output_annual_path, output_climate_path))
             processes.append(p)
             p.start()
 
