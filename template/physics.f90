@@ -375,7 +375,9 @@ SUBROUTINE waterbudget (W_fi, W_wilt, prec, wind, tmp_air, tmp_soil)
    x = 1.0 / ( 1.0 + exp(0.75*tmp_air - 1.5) )
    
    !y: proportion of snow melt in this day: Ito et al(visit model)����
-   y = 1.0 / ( 1.0 + exp( -0.3*(tmp_soil(1)-10.0) ) )
+!   y = 1.0 / ( 1.0 + exp( -0.3*(tmp_soil(1)-10.0) ) )
+	!y: proportion of snow melt in this day: Ito et al(visit model)����(250401�C��)
+	y = 1.0 / ( 1.0 + exp( -0.3*(tmp_air-10.0) ) )
    
    !water balance
    flux_snow   = prec * x
